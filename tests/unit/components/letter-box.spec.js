@@ -11,18 +11,13 @@ const $store = {
 
 function getMountedComponent(props){
   return mount(LetterBox, {
-    props,
-    global: {
-      mocks: {
-        $store
-      }
-    }
+    props
   })
 }
 
 test('component shoud have class: "correct"', () => {
   const props = {
-    letterStatus: ['correct'],
+    letterStatus: 'correct',
     allCorrect: false
   }
 
@@ -33,7 +28,7 @@ test('component shoud have class: "correct"', () => {
 
 test('component shoud have class: "incorrect"', () => {
   const props = {
-    letterStatus: ['incorrect'],
+    letterStatus: 'incorrect',
     allCorrect: false
   }
 
@@ -44,21 +39,11 @@ test('component shoud have class: "incorrect"', () => {
 
 test('component shoud have class: "outOfPlace"', () => {
   const props = {
-    letterStatus: ['outOfPlace'],
+    letterStatus: 'outOfPlace',
     allCorrect: false
   }
 
   const wrapper = getMountedComponent(props)
   const divs = wrapper.find('div');
   expect(divs.classes()).toContain('outOfPlace')
-})
-
-test(`component shoud have ${testWord.length} divs`, () => {
-  const props = {
-    letterStatus: ['outOfPlace'],
-    allCorrect: false
-  }
-
-  const wrapper = getMountedComponent(props)
-  expect(wrapper.findAll('div').length).toBe(testWord.length)
 })

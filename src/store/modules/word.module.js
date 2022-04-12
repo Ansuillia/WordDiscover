@@ -4,10 +4,10 @@ export default {
   state: {
     word: 'teste',
     results: [{
-      letterStatus: ["correct","outOfPlace","incorrect","outOfPlace","correct"],
+      letterStatus: [],
       allCorrect: false
     }],
-    errors: new Set(['a', 'b', 'c']),
+    errors: new Set(),
     win: true
   },
   getters: {

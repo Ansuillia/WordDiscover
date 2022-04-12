@@ -1,26 +1,19 @@
 <template>
   <div
     class="letter-box"
-    v-for="(letter, i) in [...word]"
-    :key="i"
-    :class="letterStatus[i]"
+    :class="letterStatus"
   >
     <span class="letter">{{ allCorrect ? letter : "" }}</span>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   props: {
-    letterStatus: Array,
+    letter: String,
+    letterStatus: String,
     allCorrect: Boolean
-  },
-  computed: {
-    ...mapGetters({
-      word: "getWord"
-    }),
-  },
+  }
 };
 </script>
 
