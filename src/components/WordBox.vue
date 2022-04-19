@@ -10,25 +10,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-import LetterBox from "./LetterBox.vue"
 
-export default {
-  components: {
-    LetterBox,
-  },
-  props: {
-    result: {
-      letterStatus : Array,
-      allCorrect: Boolean
-    }
-  },
-  computed: {
-    ...mapGetters({
-      word: "getWord"
-    }),
-  }
-};
 </script>
 
 <style>

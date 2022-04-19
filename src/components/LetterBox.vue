@@ -8,13 +8,7 @@
 </template>
 
 <script>
-export default {
-  props: {
-    letter: String,
-    letterStatus: String,
-    allCorrect: Boolean
-  }
-};
+
 </script>
 
 <style>

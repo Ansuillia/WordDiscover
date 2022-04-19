@@ -5,11 +5,17 @@ export default {
     baseWord = baseWord.toUpperCase()
     var result = {
       letterResult: {
-        letterStatus: [],
+        letterStatus: Array,
         allCorrect: false
       },
-      errors: new Set()
+      errors: []
     }
+
+    if(tryWord.length == 0)
+    {
+      return
+    }
+
     for (var i = 0; i < tryWord.length; i++) {
       if (tryWord[i] == baseWord[i]) {
         result.letterResult.letterStatus.push("correct");
@@ -21,7 +27,7 @@ export default {
         result.letterResult.letterStatus.push("incorrect");
         result.letterResult.allCorrect = false;
 
-        result.errors.add(tryWord[i])
+        result.errors.push(tryWord[i])
       }
     }
 

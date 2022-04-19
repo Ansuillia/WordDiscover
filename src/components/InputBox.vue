@@ -9,24 +9,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-export default {
-  data() {
-    return {
-      value: ''
-    }
-  },
-  computed: {
-    ...mapGetters({
-      maxLength: "getWordLength",
-    })
-  },
-  methods: {
-    ...mapActions([
-        'verifyResult'
-    ])
-  },
-};
+
 </script>
 
 <style>
