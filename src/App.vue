@@ -6,7 +6,7 @@
   <ErrorsBox />
 </template>
 
-<script>
+<script setup>
 
 </script>
 
