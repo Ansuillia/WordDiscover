@@ -5,8 +5,7 @@
       type="text"
       v-model="value"
       :maxlength="maxLength"
-      @keyup.enter="verifyResult(value)"
-    />
+      @keyup.enter="verifyResult(value)" />
     <button @click="verifyResult(value)">Verificar</button>
   </div>
 </template>

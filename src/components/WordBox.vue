@@ -5,8 +5,7 @@
       :key="i"
       :letter="letter"
       :letterStatus="result.letterStatus[i]"
-      :allCorrect="result.allCorrect"
-    />
+      :allCorrect="result.allCorrect" />
   </div>
 </template>
 
