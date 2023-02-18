@@ -1,22 +1,14 @@
 <template>
-  <div class="word-box">
-    <LetterBox
-      v-for="(letter, i) in [...word]"
-      :key="i"
-      :letter="letter"
-      :letterStatus="result.letterStatus[i]"
-      :allCorrect="result.allCorrect" />
+  <div class="flex flex-row" v-for="(result, i) in results" :key="i">
+    <div v-for="(status, j) in result.status" :key="j">
+      <LetterBox :status="status" :index="j" />
+    </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import LetterBox from '@/components/LetterBox.vue'
+import { useWordStore } from '@/stores/word'
 
-<style>
-.word-box {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-</style>
+const { results } = useWordStore()
+</script>

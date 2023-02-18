@@ -1,38 +1,33 @@
 <template>
-  <div class="letter-box" :class="letterStatus">
-    <span class="letter">{{ allCorrect ? letter : '' }}</span>
+  <div
+    class="flex h-16 w-16 items-center justify-center font-bold text-xl m-1"
+    :class="status">
+    <span>{{ status == EnumStatus.CORRECT ? word[index] : '' }}</span>
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import { EnumStatus } from '@/enums/EnumStatus'
+import { useWordStore } from '@/stores/word'
+
+defineProps<{
+  status: string
+  index: number
+}>()
+
+const { word } = useWordStore()
+</script>
 
 <style>
-.letter-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 60px;
-  margin: 2px;
-}
-
-.letter {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
 .correct {
-  background-color: green;
-  color: white;
+  @apply bg-green-500 text-white;
 }
 
 .incorrect {
-  background-color: red;
-  color: azure;
+  @apply bg-red-500 text-white;
 }
 
 .outOfPlace {
-  background-color: orange;
-  color: aliceblue;
+  @apply bg-orange-500 text-white;
 }
 </style>
