@@ -8,7 +8,7 @@ class Result {
 
 export const useWordStore = defineStore('word', {
   state: () => ({
-    word: 'teste'.toUpperCase(),
+    wordGame: '',
     results: [] as Result[],
     errors: new Set(),
   }),
@@ -40,6 +40,7 @@ export const useWordStore = defineStore('word', {
     },
   },
   getters: {
+    word: (state) => state.wordGame.toUpperCase(),
     wordLength: (state) => state.word.length,
   },
 })
