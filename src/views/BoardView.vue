@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col mx-auto">
-    <h1 class="text-2xl text-center my-3">Bem vindo ao WordDiscover!</h1>
-    <hr class="mb-5">
+  <div class="mx-auto flex flex-col">
+    <h1 class="my-3 text-center text-2xl">Bem vindo ao WordDiscover!</h1>
+    <hr class="mb-5" />
     <div class="min-h-[50vh]">
       <WordBox />
     </div>
