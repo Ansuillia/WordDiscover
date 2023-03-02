@@ -1,21 +1,25 @@
 <template>
   <div
-    class="flex h-16 w-16 items-center justify-center font-bold text-xl m-1"
+    data-testid="div-letter"
+    class="m-1 flex h-16 w-16 items-center justify-center text-xl font-bold"
     :class="status">
-    <span>{{ status == EnumStatus.CORRECT ? word[index] : '' }}</span>
+    <span data-testid="span-letter">{{ isCorrect ? word[index] : '' }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
 import { EnumStatus } from '@/enums/EnumStatus'
 import { useWordStore } from '@/stores/word'
+import { computed } from 'vue'
 
-defineProps<{
+const props = defineProps<{
   status: string
   index: number
 }>()
 
 const { word } = useWordStore()
+
+let isCorrect = computed(() => props.status == EnumStatus.CORRECT)
 </script>
 
 <style>
