@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col bottom-0">
+  <div class="bottom-0 flex flex-col">
     <input
       class="border-b-2 border-b-green-300 text-center text-xl uppercase text-gray-500 outline-none focus:border-b-green-500"
       type="text"

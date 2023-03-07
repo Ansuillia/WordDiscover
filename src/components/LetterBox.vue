@@ -1,9 +1,8 @@
 <template>
   <div
-    data-testid="div-letter"
     class="m-1 flex h-16 w-16 items-center justify-center text-xl font-bold"
     :class="status">
-    <span data-testid="span-letter">{{ isCorrect ? word[index] : '' }}</span>
+    <span>{{ isCorrect ? word[index] : '' }}</span>
   </div>
 </template>
 

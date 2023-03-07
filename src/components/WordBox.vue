@@ -1,8 +1,10 @@
 <template>
-  <div class="flex flex-row" v-for="(result, i) in results" :key="i">
-    <div v-for="(status, j) in result.status" :key="j">
-      <LetterBox :status="status" :index="j" />
-    </div>
+  <div class="wordboxDiv flex flex-row" v-for="(result, i) in results" :key="i">
+    <LetterBox
+      v-for="(status, j) in result.status"
+      :key="j"
+      :status="status"
+      :index="j" />
   </div>
 </template>
 

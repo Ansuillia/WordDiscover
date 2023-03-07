@@ -1,7 +1,6 @@
 import { vi, describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { useWordStore } from './../../stores/word'
 import LetterBox from '@/components/LetterBox.vue'
 
 describe('LetterBox.vue', () => {
@@ -27,9 +26,7 @@ describe('LetterBox.vue', () => {
       },
     })
 
-    const word = useWordStore()
-
-    return { wrapper, word }
+    return { wrapper }
   }
 
   it('expect component should have correct class', async () => {
@@ -62,18 +59,27 @@ describe('LetterBox.vue', () => {
     expect(wrapper.classes().includes('outOfPlace')).toBe(true)
   })
 
-  it('one correct letter should have print letter on span', async () => {
-    const span = '[data-testid=span-letter]'
-
+  it('should render letter only if has correct class', async () => {
     const { wrapper } = factory()
 
     const expectedLetter = 't'
 
     await wrapper.setProps({
+      status: 'incorrect',
+      index: 0,
+    })
+    expect(wrapper.find('span').text()).toBe('')
+
+    await wrapper.setProps({
+      status: 'outOfPlace',
+      index: 0,
+    })
+    expect(wrapper.find('span').text()).toBe('')
+
+    await wrapper.setProps({
       status: 'correct',
       index: 0,
     })
-
-    expect(wrapper.find(span).text()).toBe(expectedLetter.toUpperCase())
+    expect(wrapper.find('span').text()).toBe(expectedLetter.toUpperCase())
   })
 })

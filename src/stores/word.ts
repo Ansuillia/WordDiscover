@@ -41,6 +41,6 @@ export const useWordStore = defineStore('word', {
   },
   getters: {
     word: (state) => state.wordGame.toUpperCase(),
-    wordLength: (state) => state.word.length,
+    wordLength: (state) => state.wordGame.length,
   },
 })
