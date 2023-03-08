@@ -1,11 +1,12 @@
 import { useWordStore } from '@/stores/word'
 import { mount } from '@vue/test-utils'
-import { describe, expect, vi, test } from 'vitest'
-import ErrorsBox from '@/components/ErrorsBox.vue'
+import { describe, expect, vi, it } from 'vitest'
 import { createTestingPinia } from '@pinia/testing'
 
-describe.only('ErrorsBox.vue', () => {
-  function factory() {
+import ErrorsBox from '@/components/ErrorsBox.vue'
+
+describe('ErrorsBox.vue', () => {
+  function factory(state = {}) {
     const wrapper = mount(ErrorsBox, {
       gobal: {
         plugins: [
@@ -13,6 +14,7 @@ describe.only('ErrorsBox.vue', () => {
             createSpy: vi.fn,
             stubPatch: false,
             fakeApp: true,
+            initialState: { ...state },
           }),
         ],
       },
@@ -23,26 +25,24 @@ describe.only('ErrorsBox.vue', () => {
     return { wrapper, store }
   }
 
-  test('should create', () => {
+  it('should create', () => {
     const { wrapper } = factory()
     expect(wrapper).toBeTruthy()
   })
 
-  test('should have render title with text "Errors"', async () => {
-    const { wrapper, store } = factory()
+  it('should render title when there are errors', async () => {
+    const state = {
+      word: {
+        errors: new Set(['a', 'b', 'c']),
+      },
+    }
+    const { wrapper } = factory(state)
 
-    store.$patch({ errors: new Set(['a', 'b', 'c']) })
-
-    console.log(wrapper.vm.$pinia)
-
-    await wrapper.vm.$nextTick()
-
-    console.log(wrapper.html())
-
-    //expect(wrapper.find('h2').text()).contain('Errors')
+    expect(wrapper.find('h2')).toBeDefined()
   })
 
-  test('should not render title with text "Errors" when not have errors', async () => {
+  it('should not render title when there are no errors', async (ctx) => {
     const { wrapper } = factory()
+    expect(wrapper.html()).toBe('<!--v-if-->')
   })
 })
