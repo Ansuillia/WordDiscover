@@ -13,7 +13,15 @@
 </template>
 
 <script setup lang="ts">
+import { onBeforeMount } from 'vue'
 import InputWord from '@/components/InputWord.vue'
 import WordBox from '@/components/WordBox.vue'
 import ErrorsBox from '@/components/ErrorsBox.vue'
+import { useWordStore } from '@/stores/word'
+
+const { setWord } = useWordStore()
+onBeforeMount(() => {
+  setWord()
+})
+
 </script>

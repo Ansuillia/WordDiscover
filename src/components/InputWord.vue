@@ -4,7 +4,7 @@
       class="border-b-2 border-b-green-300 text-center text-xl uppercase text-gray-500 outline-none focus:border-b-green-500"
       type="text"
       v-model="attempt"
-      :maxlength="wordLength"
+      :maxlength="store.wordLength"
       placeholder="Digite uma palavra"
       @keyup.enter="validate()" />
     <button
@@ -19,17 +19,17 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useWordStore } from '@/stores/word'
-const { validateResult, wordLength } = useWordStore()
+const store = useWordStore()
 
 let attempt = ref('')
 
 function validate() {
-  validateResult(attempt.value)
+  store.validateResult(attempt.value)
   attempt.value = ''
 }
 
 const disabled = computed(
-  () => attempt.value.length < wordLength || attempt.value.length == 0
+  () => attempt.value.length < store.wordLength || attempt.value.length == 0
 )
 </script>
 

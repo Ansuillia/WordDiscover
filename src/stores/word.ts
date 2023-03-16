@@ -1,4 +1,5 @@
 import { EnumStatus } from '@/enums/EnumStatus'
+import _ from 'lodash'
 import { defineStore } from 'pinia'
 
 class Result {
@@ -10,7 +11,7 @@ export const useWordStore = defineStore('word', {
   state: () => ({
     wordGame: '',
     results: [] as Result[],
-    errors: new Set(),
+    errors: new Set<string>(),
   }),
   actions: {
     validateResult(attempt: string) {
@@ -32,15 +33,28 @@ export const useWordStore = defineStore('word', {
         } else {
           result.status.push(EnumStatus.INCORRECT)
           result.correct = false
-          this.errors.add(attempt[i])
+          this.errors = new Set<string>([...this.errors, attempt[i]].sort())
         }
       }
 
       this.results.push(result)
     },
+    setWord() {
+      fetch('/src/utils/words.ptbr.txt')
+        .then((response) => response.text())
+        .then((text) => {
+          const words = text.split(/\r?\n/).filter((w) => w.length == 5)
+          const word = _.sample(words)
+          this.wordGame = word ?? words[Math.random() * words.length]
+        })
+    },
   },
   getters: {
-    word: (state) => state.wordGame.toUpperCase(),
-    wordLength: (state) => state.wordGame.length,
+    word(): string {
+      return this.wordGame.toUpperCase()
+    },
+    wordLength(): number {
+      return this.word.length
+    },
   },
 })
