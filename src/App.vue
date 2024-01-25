@@ -7,6 +7,7 @@ import './assets/main.css'
   <header>
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/game">Game</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
   </header>
