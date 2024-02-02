@@ -1,18 +1,24 @@
-<template>
-  <div class="flex flex-row h-16 bg-gray-500 items-center">
-    <header class="container mx-auto flex">
-      <div class="mr-5">Logomarca</div>
-      <nav>
-        <router-link class="mx-2" to="/">Home</router-link>
-        <router-link class="mx-2" to="/board">Board</router-link>
-      </nav>
-    </header>
-  </div>
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import './assets/main.css'
+</script>
 
-  <div class="flex container mx-auto">
-    <router-view />
-  </div>
-  
+<template>
+  <header>
+    <nav class="flex h-24 justify-center bg-blue-400">
+      <div class="flex h-full w-1/3 items-center justify-center space-x-8">
+        <RouterLink class="text-3xl text-blue-700 hover:text-blue-900" to="/">Home</RouterLink>
+        <RouterLink class="text-3xl text-blue-700 hover:text-blue-900" to="/game">Game</RouterLink>
+        <RouterLink class="text-3xl text-blue-700 hover:text-blue-900" to="/about"
+          >About</RouterLink
+        >
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex h-screen flex-col bg-blue-300 p-10">
+    <RouterView />
+  </main>
 </template>
 
-<script setup></script>
+<style scoped></style>
