@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import './assets/main.css'
+</script>
+
 <template>
   <header>
     <nav class="flex h-24 justify-center bg-blue-400">

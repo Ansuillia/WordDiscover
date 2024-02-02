@@ -1,5 +1,3 @@
-import Board from '@/views/BoardView.vue'
-import Home from '@/views/HomeView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import GameView from '@/views/GameView.vue'
