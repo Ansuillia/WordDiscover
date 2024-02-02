@@ -1,9 +1,7 @@
 <template>
-  <div class="min-h-full flex items-center">
+  <div class="flex min-h-full items-center">
     <h1>This is an about page</h1>
   </div>
 </template>
 
-<style>
-
-</style>
+<style></style>

@@ -5,16 +5,20 @@ import './assets/main.css'
 
 <template>
   <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/game">Game</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <nav class="flex h-24 justify-center bg-blue-400">
+      <div class="flex h-full w-1/3 items-center justify-center space-x-8">
+        <RouterLink class="text-3xl text-blue-700 hover:text-blue-900" to="/">Home</RouterLink>
+        <RouterLink class="text-3xl text-blue-700 hover:text-blue-900" to="/game">Game</RouterLink>
+        <RouterLink class="text-3xl text-blue-700 hover:text-blue-900" to="/about"
+          >About</RouterLink
+        >
+      </div>
+    </nav>
   </header>
 
-  <RouterView />
+  <main class="flex h-screen flex-col bg-blue-300 p-10">
+    <RouterView />
+  </main>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
